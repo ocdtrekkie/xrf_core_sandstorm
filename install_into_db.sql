@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `xrf`;
-
 CREATE TABLE IF NOT EXISTS `g_classes` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `code` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
