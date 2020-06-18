@@ -35,16 +35,24 @@ xrf_check_auth_version($xrf_auth_version_page, $xrf_auth_version_db) or die("Una
 $xrf_myemail = $_SERVER['HTTP_X_SANDSTORM_USER_ID'];
 $xrf_myusername = $_SERVER['HTTP_X_SANDSTORM_USERNAME'];
 
-// Get user info if logged in
-if ($xrf_myid != 0)
+if ($xrf_myusername != "Anonymous%20User")
 {
-	$xrf_userdata_query="SELECT * FROM g_users WHERE id='$xrf_myid'";
-	$xrf_userdata_result=mysqli_query($xrf_db, $xrf_userdata_query);
-	
-	@$xrf_mydatereg=xrf_mysql_result($xrf_userdata_result,0,"datereg");
-	@$xrf_mylastlogin=xrf_mysql_result($xrf_userdata_result,0,"lastlogin");
-	@$xrf_myuclass=xrf_mysql_result($xrf_userdata_result,0,"uclass");
-	@$xrf_myulevel=xrf_mysql_result($xrf_userdata_result,0,"ulevel");
-	@$xrf_mystylepref=xrf_mysql_result($xrf_userdata_result,0,"style_pref");
+	$xrf_adduser_query=mysqli_prepare($xrf_db, "INSERT IGNORE INTO g_users (sandstormuserid, datereg) VALUES(?,now())") or die(mysqli_error($xrf_db));
+	mysqli_stmt_bind_param($xrf_adduser_query,"s", $xrf_myemail);
+	mysqli_stmt_execute($xrf_adduser_query) or die(mysqli_error($xrf_db));
+
+	$xrf_updateuser_query=mysqli_prepare($xrf_db, "UPDATE g_users SET lastlogin = now() WHERE sandstormuserid='?'") or die(mysqli_error($xrf_db));
+	mysqli_stmt_bind_param($xrf_updateuser_query,"s", $xrf_myemail);
+	mysqli_stmt_execute($xrf_adduser_query) or die(mysqli_error($xrf_db));
+
+	$xrf_getuser_query=mysqli_prepare($xrf_db, "SELECT id, style_pref FROM g_users WHERE sandstormuserid='?'") or die(mysqli_error($xrf_db));
+	mysqli_stmt_bind_param($xrf_getuser_query,"s", $xrf_myemail);
+	mysqli_stmt_execute($xrf_getuser_query) or die(mysqli_error($xrf_db));
+	mysqli_stmt_bind_result($xrf_getuser_query, $xrf_getuser_id, $xrf_getuser_style_pref);
+	while (mysqli_stmt_fetch($xrf_getuser_query)) {
+        $xrf_myid = $xrf_getuser_id;
+		$xrf_mystylepref = $xrf_getuser_style_pref;
+    }
+	mysqli_stmt_close($xrf_getuser_query);
 }
 ?>

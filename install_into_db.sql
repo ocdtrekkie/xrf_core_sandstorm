@@ -49,5 +49,6 @@ CREATE TABLE IF NOT EXISTS `g_users` (
   `ulevel` int(1) NOT NULL DEFAULT '1' COMMENT '0 = Banned, 1 = Guest/Inactive, 2 = User, 3 = Mod, 4 = Admin',
   `style_pref` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Style preference',
   `extra` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sandstormuserid` (`sandstormuserid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Overall user database';
