@@ -33,10 +33,10 @@ $xrf_style_default=xrf_mysql_result($xrf_config_result,0,"style_default");
 xrf_check_auth_version($xrf_auth_version_page, $xrf_auth_version_db) or die("Unable to verify authentication version.  Please report to the system administrator.");
 
 $xrf_myemail = $_SERVER['HTTP_X_SANDSTORM_USER_ID'];
-$xrf_myusername = $_SERVER['HTTP_X_SANDSTORM_USERNAME'];
+$xrf_myusername = urldecode($_SERVER['HTTP_X_SANDSTORM_USERNAME']);
 
 // Ensure user is logged in
-if ($xrf_myusername == "Anonymous%20User")
+if ($xrf_myusername == "Anonymous User")
 {
 die("You are not logged in!");
 }
@@ -46,11 +46,11 @@ else
 	mysqli_stmt_bind_param($xrf_adduser_query,"s", $xrf_myemail);
 	mysqli_stmt_execute($xrf_adduser_query) or die(mysqli_error($xrf_db));
 
-	$xrf_updateuser_query=mysqli_prepare($xrf_db, "UPDATE g_users SET lastlogin = now() WHERE sandstormuserid='?'") or die(mysqli_error($xrf_db));
+	$xrf_updateuser_query=mysqli_prepare($xrf_db, "UPDATE g_users SET lastlogin = now() WHERE sandstormuserid=?") or die(mysqli_error($xrf_db));
 	mysqli_stmt_bind_param($xrf_updateuser_query,"s", $xrf_myemail);
 	mysqli_stmt_execute($xrf_adduser_query) or die(mysqli_error($xrf_db));
 
-	$xrf_getuser_query=mysqli_prepare($xrf_db, "SELECT id, style_pref FROM g_users WHERE sandstormuserid='?'") or die(mysqli_error($xrf_db));
+	$xrf_getuser_query=mysqli_prepare($xrf_db, "SELECT id, style_pref FROM g_users WHERE sandstormuserid=?") or die(mysqli_error($xrf_db));
 	mysqli_stmt_bind_param($xrf_getuser_query,"s", $xrf_myemail);
 	mysqli_stmt_execute($xrf_getuser_query) or die(mysqli_error($xrf_db));
 	mysqli_stmt_bind_result($xrf_getuser_query, $xrf_getuser_id, $xrf_getuser_style_pref);
