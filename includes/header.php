@@ -12,6 +12,8 @@ echo "<div class=\"header\" align=\"center\">
 <font size=\"6\">$xrf_site_name</font><br>
 $xrf_myusername ($xrf_myemail)
 </p>
+</td><td>
+<p align=\"right\"><a href=\"index.php\">Home</a></p>
 </td></tr></table>
 </div>
 
