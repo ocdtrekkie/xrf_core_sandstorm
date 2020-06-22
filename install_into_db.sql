@@ -28,6 +28,16 @@ CREATE TABLE IF NOT EXISTS `g_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Verbose log of actions';
 
+CREATE TABLE IF NOT EXISTS `g_modules` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `prefix` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `folder` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `ord` int(4) NOT NULL,
+  `active` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='List of modules and configurations';
+
 CREATE TABLE IF NOT EXISTS `g_styles` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Short name/identifier of style',
