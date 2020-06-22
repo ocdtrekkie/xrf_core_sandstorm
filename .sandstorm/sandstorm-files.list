@@ -142,7 +142,11 @@ lib64/ld-linux-x86-64.so.2
 opt/app/.sandstorm/launcher.sh
 opt/app/.sandstorm/service-config/mime.types
 opt/app/.sandstorm/service-config/nginx.conf
+opt/app/acp.php
 opt/app/acp_export_db.php
+opt/app/acp_general.php
+opt/app/acp_users.php
+opt/app/acp_view_log.php
 opt/app/includes/footer.php
 opt/app/includes/functions_auth.php
 opt/app/includes/functions_db.php
@@ -154,6 +158,10 @@ opt/app/includes/header.php
 opt/app/includes/variables.php
 opt/app/index.php
 opt/app/install_into_db.sql
+opt/app/styles/xrfdark/images/banner.png
+opt/app/styles/xrfdark/images/earth.jpg
+opt/app/styles/xrfdark/images/footer.png
+opt/app/styles/xrfdark/style.css
 opt/app/styles/xrflight/images/banner.png
 opt/app/styles/xrflight/images/earth.jpg
 opt/app/styles/xrflight/images/footer.png
