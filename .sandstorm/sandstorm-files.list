@@ -142,12 +142,14 @@ lib64/ld-linux-x86-64.so.2
 opt/app/.sandstorm/launcher.sh
 opt/app/.sandstorm/service-config/mime.types
 opt/app/.sandstorm/service-config/nginx.conf
+opt/app/acp_export_db.php
 opt/app/includes/footer.php
 opt/app/includes/functions_auth.php
 opt/app/includes/functions_db.php
 opt/app/includes/functions_redir.php
 opt/app/includes/functions_sec.php
 opt/app/includes/global.php
+opt/app/includes/global_req_login.php
 opt/app/includes/header.php
 opt/app/includes/variables.php
 opt/app/index.php

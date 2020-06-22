@@ -41,9 +41,9 @@ if ($xrf_myusername != "Anonymous User")
 	mysqli_stmt_bind_param($xrf_adduser_query,"s", $xrf_myemail);
 	mysqli_stmt_execute($xrf_adduser_query) or die(mysqli_error($xrf_db));
 
-	$xrf_updateuser_query=mysqli_prepare($xrf_db, "UPDATE g_users SET lastlogin = now() WHERE sandstormuserid=?") or die(mysqli_error($xrf_db));
-	mysqli_stmt_bind_param($xrf_updateuser_query,"s", $xrf_myemail);
-	mysqli_stmt_execute($xrf_adduser_query) or die(mysqli_error($xrf_db));
+	$xrf_updateuser_query=mysqli_prepare($xrf_db, "UPDATE g_users SET username = ?, lastlogin = now() WHERE sandstormuserid=?") or die(mysqli_error($xrf_db));
+	mysqli_stmt_bind_param($xrf_updateuser_query,"ss", $xrf_myusername, $xrf_myemail);
+	mysqli_stmt_execute($xrf_updateuser_query) or die(mysqli_error($xrf_db));
 
 	$xrf_getuser_query=mysqli_prepare($xrf_db, "SELECT id, style_pref FROM g_users WHERE sandstormuserid=?") or die(mysqli_error($xrf_db));
 	mysqli_stmt_bind_param($xrf_getuser_query,"s", $xrf_myemail);
