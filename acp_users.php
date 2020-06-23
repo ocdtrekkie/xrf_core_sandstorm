@@ -21,10 +21,11 @@ $qq=0;
 while ($qq < $num) {
 
 $id=xrf_mysql_result($result,$qq,"id");
-$username=xrf_mysql_result($result,$qq,"username");
 $sandstormuserid=xrf_mysql_result($result,$qq,"sandstormuserid");
+$username=xrf_mysql_result($result,$qq,"username");
+$ulevel=xrf_mysql_result($result,$qq,"ulevel");
 
-echo "<tr><td width=200>$username ($id)</td><td width=200>$sandstormuserid</td></tr>";
+echo "<tr><td width=200>$username ($id)</td><td width=400>$sandstormuserid</td><td width=100>$ulevel</td></tr>";
 $qq++;
 }
 

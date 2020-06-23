@@ -35,8 +35,8 @@ xrf_check_auth_version($xrf_auth_version_page, $xrf_auth_version_db) or die("Una
 $xrf_myemail = $_SERVER['HTTP_X_SANDSTORM_USER_ID'];
 $xrf_myusername = urldecode($_SERVER['HTTP_X_SANDSTORM_USERNAME']);
 if (strpos($_SERVER['HTTP_X_SANDSTORM_PERMISSIONS'], "admin") !== false) { $xrf_myulevel = 4; }
-if (strpos($_SERVER['HTTP_X_SANDSTORM_PERMISSIONS'], "mod") !== false) { $xrf_myulevel = 3; }
-if (strpos($_SERVER['HTTP_X_SANDSTORM_PERMISSIONS'], "user") !== false) { $xrf_myulevel = 2; }
+elseif (strpos($_SERVER['HTTP_X_SANDSTORM_PERMISSIONS'], "mod") !== false) { $xrf_myulevel = 3; }
+elseif (strpos($_SERVER['HTTP_X_SANDSTORM_PERMISSIONS'], "user") !== false) { $xrf_myulevel = 2; }
 
 // Ensure user is logged in
 if ($xrf_myusername == "Anonymous User")
