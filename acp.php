@@ -18,6 +18,8 @@ echo "
 <p><b>General Management</b></p>
 <p><a href=\"acp_general.php\">General Configuration</a><br>
 <a href=\"acp_view_log.php\">View System Log</a><br>
+<p><b>Database Management</b></p>
+<a href=\"acp_service_db.php\">Service Database</a><br>
 <a href=\"acp_export_db.php\">Export Database</a></p>
 
 </td><td width=\"50%\">
