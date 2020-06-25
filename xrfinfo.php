@@ -11,6 +11,6 @@ XRFversion: $xrf_auth_version_db ($xrf_auth_version_page)<br>
 XRFlicense: $xrf_site_key<br>
 <b>end XRFinfo</b></p>
 
-<p>PHPversion: " . phpversion() . "</p>";
+<p>PHPversion: " . phpversion() . "<br>SQLversion: " . mysqli_get_server_info($xrf_db) . "</p>";
 
 require_once("includes/footer.php"); ?>
